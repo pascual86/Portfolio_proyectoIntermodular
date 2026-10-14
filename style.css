@@ -1,0 +1,441 @@
+/* =========================================================
+   Portfolio de Pascual Martín · Hoja de estilos principal
+   Estructura:
+   1. Variables y reset
+   2. Cabecera y menú (HU-05)
+   3. Inicio
+   4. Sobre mí (HU-01)
+   5. Contacto (HU-02)
+   6. Pie de página (HU-05)
+   7. Componentes comunes (botones, iconos sociales)
+   8. Mediaqueries
+   ========================================================= */
+
+/* ---------- 1. Variables y reset ---------- */
+:root {
+    /* Colores */
+    --color-fondo: #ffffff;
+    --color-fondo-secundario: #d5fdf9;
+    --color-texto: #000000;
+    --color-principal: #007f73;
+    --color-blanco: #ffffff;
+
+    /* Tipografía */
+    --fuente-base: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --texto-base: 1.6rem;
+    --texto-m: 2rem;
+    --texto-l: 3rem;
+    --texto-xl: 4rem;
+    --titulo-m: 5rem;
+    --titulo: 6rem;
+
+    /* Espaciados */
+    --espacio-xs: 1rem;
+    --espacio-s: 2rem;
+    --espacio-m: 4rem;
+    --espacio-l: 6rem;
+    --espacio-xl: 10rem;
+
+    /* Efectos */
+    --radio-redondeado: 2rem;
+    --radio-pastilla: 4rem;
+    --brillo: 0 0 2rem var(--color-principal);
+    --transicion: 0.5s ease;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    border: none;
+    outline: none;
+    font-family: var(--fuente-base);
+}
+
+html {
+    font-size: 62.5%; /* 1rem = 10px */
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+body {
+    background: var(--color-fondo);
+    color: var(--color-texto);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    flex: 1;
+}
+
+section {
+    min-height: 100vh;
+    padding: var(--espacio-xl) 9% var(--espacio-s);
+    /* Blanco bajo la cabecera que pasa al verde del pie */
+    background: linear-gradient(var(--color-fondo) 20%, var(--color-fondo-secundario));
+}
+
+span {
+    color: var(--color-principal);
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+/* ---------- 2. Cabecera y menú ---------- */
+.cabecera {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--espacio-s) 5%;
+    background: var(--color-principal);
+    transition: all var(--transicion);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: var(--espacio-xs);
+    font-size: var(--texto-l);
+    font-weight: 800;
+    color: var(--color-blanco);
+    transition: transform var(--transicion);
+}
+
+.logo:hover {
+    transform: scale(1.05);
+}
+
+.logo-marca {
+    display: grid;
+    place-items: center;
+    width: 4rem;
+    height: 4rem;
+    border: 0.2rem solid var(--color-blanco);
+    border-radius: 50%;
+    font-size: var(--texto-m);
+    color: var(--color-blanco);
+}
+
+.menu a {
+    margin-left: var(--espacio-m);
+    font-size: var(--texto-m);
+    font-weight: 700;
+    color: var(--color-blanco);
+    transition: color 0.3s;
+}
+
+.menu a:hover,
+.menu a.activo {
+    color: var(--color-texto);
+}
+
+/* ---------- 3. Inicio ---------- */
+.inicio {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.inicio-img img {
+    width: 25vw;
+    border-radius: 50%;
+    box-shadow: var(--brillo);
+    animation: flotar 4s ease-in-out infinite;
+    transition: box-shadow var(--transicion);
+}
+
+.inicio-img img:hover {
+    box-shadow: 0 0 2rem var(--color-principal),
+                0 0 4rem var(--color-principal),
+                0 0 6rem var(--color-principal);
+}
+
+.inicio-contenido {
+    margin-left: var(--espacio-l);
+}
+
+.inicio-contenido h3 {
+    font-size: var(--texto-xl);
+    font-weight: 700;
+    color: var(--color-texto);
+}
+
+.inicio-contenido h3:nth-of-type(2) {
+    margin-bottom: var(--espacio-s);
+}
+
+.inicio-contenido h1 {
+    font-size: var(--titulo);
+    font-weight: 700;
+    line-height: 1.3;
+}
+
+.inicio-contenido p {
+    font-size: var(--texto-base);
+    line-height: 1.6;
+    max-width: 60rem;
+}
+
+@keyframes flotar {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-2rem); }
+}
+
+/* ---------- 4. Sobre mí ---------- */
+.sobre-mi {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--espacio-s);
+}
+
+.sobre-mi-img img {
+    width: 25vw;
+    border: 0.2rem solid var(--color-principal);
+    border-radius: 50%;
+    box-shadow: var(--brillo);
+    transition: box-shadow var(--transicion);
+}
+
+.sobre-mi-img img:hover {
+    box-shadow: 0 0 2rem var(--color-principal),
+                0 0 4rem var(--color-principal),
+                0 0 6rem var(--color-principal);
+}
+
+.sobre-mi-contenido {
+    padding: 0 var(--espacio-m);
+}
+
+.sobre-mi-contenido h2 {
+    font-size: var(--titulo);
+    line-height: 1.2;
+    color: var(--color-texto);
+}
+
+.sobre-mi-contenido h3 {
+    font-size: var(--texto-l);
+}
+
+.sobre-mi-contenido p {
+    font-size: var(--texto-base);
+    line-height: 1.7;
+    margin: var(--espacio-s) 0 0;
+}
+
+.sobre-mi-contenido .btn {
+    margin-top: var(--espacio-m);
+}
+
+/* ---------- 5. Contacto ---------- */
+.contacto {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.titulo-seccion {
+    text-align: center;
+    font-size: var(--titulo);
+    color: var(--color-principal);
+    margin-bottom: var(--espacio-xs);
+}
+
+.subtitulo-seccion {
+    text-align: center;
+    font-size: var(--texto-m);
+    margin-bottom: var(--espacio-l);
+}
+
+.contacto-tarjetas {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    flex-wrap: wrap;
+    gap: var(--espacio-s);
+}
+
+.tarjeta {
+    flex: 0 1 30rem;
+    background: var(--color-fondo-secundario);
+    padding: var(--espacio-l) var(--espacio-s);
+    border: 0.2rem solid var(--color-blanco);
+    border-radius: var(--radio-redondeado);
+    text-align: center;
+    transition: transform var(--transicion), border-color var(--transicion);
+}
+
+.tarjeta:hover {
+    border-color: var(--color-principal);
+    transform: scale(1.02);
+}
+
+.tarjeta i {
+    font-size: var(--titulo);
+    color: var(--color-principal);
+}
+
+.tarjeta h3 {
+    font-size: var(--texto-l);
+    margin-top: var(--espacio-xs);
+}
+
+.tarjeta p {
+    font-size: var(--texto-base);
+    margin: var(--espacio-xs) 0 var(--espacio-m);
+    word-break: break-word;
+}
+
+/* ---------- 6. Pie de página ---------- */
+.pie {
+    width: 100%;
+    padding: var(--espacio-m) 9%;
+    background: var(--color-fondo-secundario);
+    text-align: center;
+}
+
+.pie .redes {
+    justify-content: center;
+    padding-bottom: var(--espacio-s);
+}
+
+.pie-enlaces {
+    display: flex;
+    justify-content: center;
+    gap: var(--espacio-m);
+    margin-bottom: var(--espacio-s);
+}
+
+.pie-enlaces a {
+    font-size: var(--texto-base);
+    font-weight: 600;
+    color: var(--color-principal);
+}
+
+.pie-enlaces a:hover {
+    text-decoration: underline;
+}
+
+.copyright {
+    font-size: var(--texto-base);
+    color: var(--color-texto);
+}
+
+/* ---------- 7. Componentes comunes ---------- */
+.redes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--espacio-s);
+    margin: var(--espacio-m) 0;
+}
+
+.redes a {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 4rem;
+    height: 4rem;
+    border: 0.2rem solid var(--color-principal);
+    border-radius: 50%;
+    font-size: var(--texto-m);
+    color: var(--color-principal);
+    transition: all var(--transicion);
+}
+
+.redes a:hover {
+    transform: scale(1.2) translateY(-1rem);
+    background: var(--color-principal);
+    color: var(--color-blanco);
+    box-shadow: var(--brillo);
+}
+
+.btn {
+    display: inline-block;
+    padding: var(--espacio-xs) var(--espacio-m);
+    background: var(--color-principal);
+    border-radius: var(--radio-pastilla);
+    font-size: var(--texto-base);
+    font-weight: 600;
+    letter-spacing: 0.1rem;
+    color: var(--color-blanco);
+    transition: box-shadow var(--transicion);
+}
+
+.btn:hover {
+    box-shadow: 0 0 var(--espacio-s) var(--color-principal);
+}
+
+/* ---------- 8. Mediaqueries ---------- */
+@media (max-width: 1200px) {
+    html { font-size: 55%; }
+}
+
+@media (max-width: 991px) {
+    .cabecera { padding: var(--espacio-s) 3%; }
+    section   { padding: var(--espacio-xl) 3% var(--espacio-s); }
+    .pie      { padding: var(--espacio-s) 3%; }
+}
+
+@media (max-width: 786px) {
+    .cabecera {
+        flex-direction: column;
+        gap: var(--espacio-xs);
+        padding: var(--espacio-s) 3%;
+    }
+
+    .menu a {
+        margin: 0 var(--espacio-xs);
+    }
+
+    section {
+        padding-top: 16rem;
+    }
+
+    .inicio {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .inicio-contenido {
+        order: 2;
+        margin-left: 0;
+    }
+
+    .inicio-contenido h3 { font-size: var(--texto-l); }
+    .inicio-contenido h1 { font-size: var(--titulo-m); }
+    .inicio-contenido p  { margin: 0 auto; }
+    .inicio .redes       { justify-content: center; }
+
+    .inicio-img img,
+    .sobre-mi-img img {
+        width: 70vw;
+        margin: var(--espacio-m) 0;
+    }
+
+    .sobre-mi {
+        flex-direction: column-reverse;
+        text-align: center;
+    }
+
+    .sobre-mi-contenido { padding: 0 var(--espacio-xs); }
+}
+
+@media (max-width: 450px) {
+    html { font-size: 50%; }
+
+    .pie-enlaces {
+        flex-direction: column;
+        gap: var(--espacio-xs);
+    }
+}
